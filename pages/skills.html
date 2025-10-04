@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Name - Yetenekler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles/main.css" />
+  </head>
+
+  <body class="bg-gray-900 text-gray-200 antialiased">
+    <header class="bg-gray-800 shadow-lg fixed w-full z-50">
+      <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+        <a
+          href="../index.html"
+          class="text-2xl font-bold text-blue-400 hover:text-blue-300 transition-colors"
+          >Your Name</a
+        >
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="../index.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors"
+              >Anasayfa</a
+            >
+          </li>
+          <li>
+            <a
+              href="./about.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors"
+              >Hakkımda</a
+            >
+          </li>
+          <li>
+            <a
+              href="./projects.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors"
+              >Projelerim</a
+            >
+          </li>
+          <li>
+            <a
+              href="./skills.html"
+              class="text-blue-400 hover:text-blue-300 font-medium transition-colors"
+              >Yetenekler</a
+            >
+          </li>
+          <li>
+            <a
+              href="./contact.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors"
+              >İletişim</a
+            >
+          </li>
+        </ul>
+        <div class="md:hidden">
+          <button
+            id="mobile-menu-button"
+            class="text-gray-200 hover:text-blue-400 focus:outline-none"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-4 shadow-inner">
+        <ul class="flex flex-col items-center space-y-4">
+          <li>
+            <a
+              href="../index.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors text-lg"
+              >Anasayfa</a
+            >
+          </li>
+          <li>
+            <a
+              href="./about.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors text-lg"
+              >Hakkımda</a
+            >
+          </li>
+          <li>
+            <a
+              href="./projects.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors text-lg"
+              >Projelerim</a
+            >
+          </li>
+          <li>
+            <a
+              href="./skills.html"
+              class="text-blue-400 hover:text-blue-300 font-medium transition-colors text-lg"
+              >Yetenekler</a
+            >
+          </li>
+          <li>
+            <a
+              href="./contact.html"
+              class="text-gray-200 hover:text-blue-400 font-medium transition-colors text-lg"
+              >İletişim</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <main class="pt-24">
+      <section class="container mx-auto px-6 py-12 fade-in">
+        <h1 class="text-4xl font-bold text-white mb-8 text-center">Yeteneklerim</h1>
+        <div class="max-w-4xl mx-auto bg-gray-800 p-8 rounded-lg shadow-xl">
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+              <p class="text-lg font-medium">HTML5</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-css3-alt text-4xl text-blue-500 mb-2"></i>
+              <p class="text-lg font-medium">CSS3</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-js text-4xl text-yellow-500 mb-2"></i>
+              <p class="text-lg font-medium">JavaScript</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-react text-4xl text-blue-400 mb-2"></i>
+              <p class="text-lg font-medium">React.js</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-vuejs text-4xl text-green-500 mb-2"></i>
+              <p class="text-lg font-medium">Vue.js</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-wind text-4xl text-blue-300 mb-2"></i>
+              <p class="text-lg font-medium">Tailwind CSS</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-sass text-4xl text-pink-500 mb-2"></i>
+              <p class="text-lg font-medium">Sass/SCSS</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fab fa-git-alt text-4xl text-red-600 mb-2"></i>
+              <p class="text-lg font-medium">Git & GitHub</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-laptop-code text-4xl text-teal-400 mb-2"></i>
+              <p class="text-lg font-medium">Responsive Design</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-database text-4xl text-purple-400 mb-2"></i>
+              <p class="text-lg font-medium">RESTful APIs</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-cogs text-4xl text-gray-400 mb-2"></i>
+              <p class="text-lg font-medium">Problem Solving</p>
+            </div>
+            <div
+              class="bg-gray-700 p-4 rounded-lg text-center hover:bg-gray-600 transform hover:scale-105 transition-transform duration-300"
+            >
+              <i class="fas fa-users text-4xl text-blue-600 mb-2"></i>
+              <p class="text-lg font-medium">Teamwork</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="bg-gray-800 text-gray-400 py-8 text-center mt-16">
+      <div class="container mx-auto px-6">
+        <p>&copy; 2023 Your Name. Tüm Hakları Saklıdır.</p>
+        <div class="flex justify-center space-x-6 mt-4">
+          <a href="#" class="hover:text-blue-400 transition-colors"
+            ><i class="fab fa-linkedin fa-lg"></i
+          ></a>
+          <a href="#" class="hover:text-blue-400 transition-colors"
+            ><i class="fab fa-github fa-lg"></i
+          ></a>
+          <a href="#" class="hover:text-blue-400 transition-colors"
+            ><i class="fab fa-twitter fa-lg"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+    <script src="../scripts/app.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/your-font-awesome-kit.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
