@@ -75,7 +75,7 @@
 
 /* Navigation Links */
 .nav-link {
-    @apply text-gray-300 text-lg hover:text-teal-400 transition-colors duration-300 relative;
+    @apply text-gray-300 text-lg hover:text-teal-400 transition-colors duration-300 relative flex items-center;
 }
 .nav-link::after {
     content: '';
@@ -87,6 +87,11 @@
 }
 .nav-link.active {
     @apply text-teal-400;
+}
+
+/* Icon spacing for nav links and buttons */
+.icon-spacing {
+    @apply mr-2;
 }
 
 /* Buttons */
@@ -112,7 +117,7 @@
 
 /* Skill Item */
 .skill-item {
-    @apply bg-gray-700 text-gray-200 px-6 py-3 rounded-full text-center text-lg font-semibold shadow-md transition-all duration-300 hover:bg-teal-600 hover:text-white transform hover:scale-105;
+    @apply bg-gray-700 text-gray-200 px-6 py-3 rounded-full text-center text-lg font-semibold shadow-md transition-all duration-300 hover:bg-teal-600 hover:text-white transform hover:scale-105 flex items-center justify-center;
 }
 
 /* Project Card */
