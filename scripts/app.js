@@ -1,61 +1,79 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById('menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-    if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (!mobileMenu.classList.contains('hidden')) {
-                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-            } else {
-                mobileMenu.style.maxHeight = '0';
-            }
-        });
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('flex');
+    });
+  }
 
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.style.maxHeight = '0';
-            });
-        });
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+      });
+    });
+  });
+
+  // Intersection Observer for fade-in effect
+  const sections = document.querySelectorAll('section, footer');
+  const options = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('fade-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  sections.forEach((section) => {
+    section.classList.add('opacity-0'); // Add initial opacity for animation
+    observer.observe(section);
+  });
+
+  // Hero title text reveal animation
+  const heroTitle = document.querySelector('.hero-title');
+  if (heroTitle) {
+    const text = heroTitle.textContent;
+    heroTitle.innerHTML = '';
+    text.split('').forEach((char, index) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.setProperty('--delay', `${index * 0.05}s`);
+      heroTitle.appendChild(span);
+    });
+  }
+
+  // Simple page transition effect
+  document.querySelectorAll('a').forEach((link) => {
+    if (link.hostname === window.location.hostname && !link.getAttribute('href').startsWith('#')) {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.body.classList.add('page-transition-leave-active');
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 500); // Match the transition duration in CSS
+      });
     }
+  });
 
-    // Intersection Observer for scroll animations
-    const animateElements = document.querySelectorAll('[data-animate]');
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                // Apply delay if specified
-                const delay = entry.target.dataset.delay;
-                if (delay) {
-                    entry.target.classList.add(`delay-${delay}`);
-                }
-                observer.unobserve(entry.target); // Unobserve once animated
-            }
-        });
-    }, {
-        threshold: 0.1, // Trigger when 10% of the item is visible
-    });
-
-    animateElements.forEach(element => {
-        observer.observe(element);
-    });
-
-    // Add active class to current nav link
-    const navLinks = document.querySelectorAll('.nav-link');
-    const currentPath = window.location.pathname;
-
-    navLinks.forEach(link => {
-        let linkPath = link.getAttribute('href').replace(/^\.\.\//, '').replace(/^\.\//, '');
-        let currentPathClean = currentPath.replace(/^\//, '').replace(/^pages\//, '');
-
-        if (linkPath === 'index.html' && (currentPathClean === '' || currentPathClean === 'index.html')) {
-            link.classList.add('active');
-        } else if (linkPath !== 'index.html' && currentPathClean.includes(linkPath)) {
-            link.classList.add('active');
-        }
-    });
-
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      document.body.classList.remove('page-transition-leave-active');
+      document.body.classList.add('page-transition-enter-active');
+      setTimeout(() => {
+        document.body.classList.remove('page-transition-enter-active');
+      }, 500);
+    }
+  });
 });
