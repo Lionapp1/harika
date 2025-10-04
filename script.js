@@ -1,1 +1,30 @@
-document.addEventListener('DOMContentLoaded', () => {document.querySelectorAll('a.nav-link, a.btn-primary').forEach(anchor => {anchor.addEventListener('click', function (e) {const href = this.getAttribute('href');if (href.startsWith('/')) { // Only prevent default for internal linkse.preventDefault();const targetId = href.substring(1); // Remove leading slash for local sectionsif (targetId) { // Check if it's a section on the current pageconst targetElement = document.getElementById(targetId);if (targetElement) {const headerOffset = document.querySelector('header').offsetHeight;const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;const offsetPosition = elementPosition - headerOffset;window.scrollTo({top: offsetPosition,behavior: 'smooth'});} else { // Navigate to different page if not a local sectionwindow.location.href = href;}} else { // Handle root path '/' for homepage window.location.href = '/';}}});});const menuButton = document.getElementById('menu-button');const mobileMenu = document.getElementById('mobile-menu');if (menuButton && mobileMenu) {menuButton.addEventListener('click', () => {mobileMenu.classList.toggle('hidden');});}const revealElements = document.querySelectorAll('.reveal-on-scroll');const observer = new IntersectionObserver((entries, observer) => {entries.forEach(entry => {if (entry.isIntersecting) {entry.target.classList.add('is-visible');observer.unobserve(entry.target);}});}, {threshold: 0.1,rootMargin: '0px 0px -50px 0px'});revealElements.forEach(element => {observer.observe(element);});});
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('scale-y-100');
+                mobileMenu.classList.add('scale-y-0');
+            } else {
+                mobileMenu.classList.remove('scale-y-0');
+                mobileMenu.classList.add('scale-y-100');
+            }
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('scale-y-0');
+                    mobileMenu.classList.remove('scale-y-100');
+                    setTimeout(() => {
+                        mobileMenu.classList.add('hidden');
+                    }, 300); // Wait for transition to finish
+                }
+            });
+        });
+    }
+});
